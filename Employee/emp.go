@@ -6,5 +6,5 @@ type Employee struct {
 	gorm.Model
 	Name   string
 	Age    int
-	Gender bool
+	Gender *bool
 }

@@ -24,9 +24,9 @@ func main() {
 	// 	Age:    27,
 	// 	Gender: false,
 	// }
-	// for {
-	// 	db.Debug().Create(&employee.Employee{Name: "Xyz", Age: 31, Gender: true})
-
+	// // for {
+	// db.Debug().Create(&employee)
+	// }
 	// employees := []employee.Employee{}
 	// db.Debug().Table("employees").Find(&employees)
 	// fmt.Println(employees)
@@ -56,9 +56,11 @@ func main() {
 	// db.Where("DEPTNO LIKE ?", "10").Delete(&department.Dept{})
 	// db.Unscoped().Delete(&department.Dept{})
 	// db.Debug().Where("Name = ?", "Xyz").Delete(&employee.Employee{})
-	db.Debug().Unscoped().Where("name = Xyz").Find(&employee.Employee{})
-	db.Debug().Model(&employee.Employee{}).Updates(map[string]interface{}{"Name": "Saket", "Age": 21, "Gender": true})
-
+	// db.Debug().Unscoped().Where("name = Xyz").Find(&employee.Employee{})
+	// db.Debug().Model(&employee.Employee{}).Updates(map[string]interface{}{"Name": "Saket", "Age": 21, "Gender": true})
+	foo := true
+	db.Debug().Model(&employee.Employee{}).Updates(&employee.Employee{Name: "Saket", Age: 23, Gender: &foo})
+	//
 	defer db.Close()
 }
 
