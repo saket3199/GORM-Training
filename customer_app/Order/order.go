@@ -2,15 +2,11 @@ package order
 
 import (
 	"github.com/jinzhu/gorm"
-	customer "github.com/saket3199/GORM-Training/Customer"
 )
-
-var ID uint = 1
 
 type Order struct {
 	gorm.Model
-	Customer    customer.Customer `gorm:"ForeignKey:CustomerID"`
-	CustomerID  uint
+	CustomerID  uint `gorm:"ForeignKey:CustomerID"`
 	ItemName    string
 	ItemDesc    string
 	Quantity    int
