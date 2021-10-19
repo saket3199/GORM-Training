@@ -1,26 +1,26 @@
 package customer
 
 import (
-	"github.com/jinzhu/gorm"
+	"github.com/saket3199/GORM-Training/customer_app/Model"
 )
 
 type Customer struct {
-	gorm.Model
+	Model.Model
 	Email    string `gorm:"unique;not null"`
 	UserPass string
 	Fname    string
 	Lname    string
 	Age      int
-	Gender   *bool
+	IsMale   *bool
 }
 
-func Newc(Email, UserPass, Fname, Lname string, Age int, Gender *bool) *Customer {
+func New(email, userPass, fname, lname string, age int, isMale *bool) *Customer {
 	return &Customer{
-		Email:    Email,
-		UserPass: UserPass,
-		Fname:    Fname,
-		Lname:    Lname,
-		Age:      Age,
-		Gender:   Gender,
+		Email:    email,
+		UserPass: userPass,
+		Fname:    fname,
+		Lname:    lname,
+		Age:      age,
+		IsMale:   isMale,
 	}
 }

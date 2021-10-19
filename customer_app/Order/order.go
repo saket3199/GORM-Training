@@ -1,12 +1,13 @@
 package order
 
 import (
-	"github.com/jinzhu/gorm"
+	"github.com/saket3199/GORM-Training/customer_app/Model"
+	uuid "github.com/satori/go.uuid"
 )
 
 type Order struct {
-	gorm.Model
-	CustomerID  uint `gorm:"ForeignKey:CustomerID"`
+	Model.Model
+	CustomerID  uuid.UUID `gorm:"ForeignKey:CustomerID" type:"uuid"`
 	ItemName    string
 	ItemDesc    string
 	Quantity    int
@@ -14,13 +15,13 @@ type Order struct {
 	IsPaid      *bool
 }
 
-func New(ID uint, ItemName, ItemDesc string, Quantity int, CostPerUnit float64, Ispaid *bool) *Order {
+func New(ID uuid.UUID, itemName, itemDesc string, quantity int, costPerUnit float64, ispaid *bool) *Order {
 	return &Order{
 		CustomerID:  ID,
-		ItemName:    ItemName,
-		ItemDesc:    ItemDesc,
-		Quantity:    Quantity,
-		CostPerUnit: CostPerUnit,
-		IsPaid:      Ispaid,
+		ItemName:    itemName,
+		ItemDesc:    itemDesc,
+		Quantity:    quantity,
+		CostPerUnit: costPerUnit,
+		IsPaid:      ispaid,
 	}
 }
